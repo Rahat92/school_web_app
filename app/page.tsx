@@ -1,9 +1,19 @@
-import Image from "next/image";
-
+import Header from "@/components/header";
+import ActionBar from "@/components/action-bar";
+import MoodList from "@/components/mood-list"
+import { Suspense } from "react";
 export default function Home() {
   return (
-    <>
-      <h1>Hello world</h1>
-    </>
+  <div>
+   <div className="mx-auto max-w-screen-md w-full pp-4">
+      <Header />
+      <ActionBar />
+      <div>
+       <Suspense fallback="one moment...">
+       <MoodList />
+       </Suspense>
+      </div>
+   </div>
+  </div>
   );
 }
