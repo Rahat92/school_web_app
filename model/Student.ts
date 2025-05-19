@@ -10,6 +10,7 @@ interface IStudent extends Document {
     gender: string;
     age: number;
     class: string;
+    photo: string
     isActive: boolean;
     createdAt: Date;
 }
@@ -24,6 +25,7 @@ const StudentSchema: Schema = new Schema({
     gender: { type: String, enum: ['Male', 'Female', 'Other'], required: true },
     age: { type: Number, required: true },
     class: { type: String, required: true },
+    photo: { type: String, required: true },
     isActive: { type: Boolean, default: true },
     createdAt: { type: Date, default: Date.now }
 });
