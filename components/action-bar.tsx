@@ -1,5 +1,5 @@
 'use client'
-import React, {useState} from "react"
+import React, { useState } from "react"
 import SideDrawer from "./side-drawer"
 import { MoodForm } from "./mood-form"
 
@@ -16,16 +16,16 @@ const ActionBar: React.FC = () => {
         <section className="w-full bg-gray-200 flex mt-6 mb-6">
             <div className="mx-auto max-w-screen-md w-full p-4">
                 <button
-                onClick={toggleDrawer}
-                className="bg-purple-500 text-white px-4 py-2 rounded"
+                    onClick={toggleDrawer}
+                    className="bg-purple-500 text-white px-4 py-2 rounded"
                 >
                     Post Mood
                 </button>
                 <SideDrawer
-                isOpen={isDrawerOpen}
-                onClose={closeDrawer}
+                    isOpen={isDrawerOpen}
+                    onClose={closeDrawer}
                 >
-                   <MoodForm />
+                    <MoodForm />
                 </SideDrawer>
             </div>
         </section>

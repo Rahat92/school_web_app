@@ -1,11 +1,12 @@
 'use server'
+import connectDB from "@/lib/db"
 import Mood from "@/model/Mood"
-import connectDB from "../db"
 
 export const getMoods = async ()=> {
     try {
         await connectDB()
-        const moods = await Mood.find({})
+        // Fetch all moods from the database with pagination
+        const moods = await Mood.find({}).sort({ createdAt: -1 }).limit(10).lean()
         return JSON.parse(JSON.stringify(moods))
     } catch (error) {
         console.log("Error getting moods " + error)
