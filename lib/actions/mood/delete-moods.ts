@@ -1,9 +1,9 @@
 'use server'
 import Mood from "@/model/Mood"
-import connectDB from "../db"
+import connectDB from "../../db"
 import { revalidatePath } from "next/cache"
 
-const deleteMood = async(prevState: any, formData: FormData) => {
+const deleteMood = async(formData: FormData) => {
     try {
         await connectDB()
         const id = formData.get('id') as string

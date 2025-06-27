@@ -1,5 +1,5 @@
 import React from "react";
-import { getMoods } from "@/lib/actions/get-mood";
+import { getMoods } from "@/lib/actions/mood/get-mood";
 import UpdateBtn from "./update-btn";
 import DeleteButton from "./delete-button";
 
@@ -14,7 +14,7 @@ const MoodList = async ()=> {
     const moods = await getMoods()
     return(
         <div>
-            {moods?.map((mood: {_id: any; mood: any; note: any}) => {
+            {moods?.map((mood: {_id: string; mood: string; note: string}) => {
                 return (
                     <div key={mood._id}
                     className="flex justify-between items-center w-full bg-white border rounded p-4 mb-4 transition-transform duration-200 hover:shadow-xl hover:bg-gray-100"

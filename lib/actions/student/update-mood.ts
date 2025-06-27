@@ -1,16 +1,16 @@
 'use server'
 import Mood from "@/model/Mood"
-import connectDB from "../db"
 import {z} from "zod"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
+import connectDB from "@/lib/db"
 
 const MoodSchema = z.object({
     note: z.string().min(2, "Note must be 2 characters long"),
     mood: z.string().min(1, "Mood cannot be empty")
 })
 
-export const updateMood = async (prevState: any, formData: FormData) => {
+export const updateMood = async (formData: FormData) => {
     const validatedFields = MoodSchema.safeParse(
         Object.fromEntries(formData.entries())
     )

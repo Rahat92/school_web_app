@@ -10,7 +10,7 @@ interface SideDrawerProps {
 }
 
 
-const SideDrawer: React.FC<SideDrawerProps> = ({isOpen, onClose, children, mood}) => {
+const SideDrawer: React.FC<SideDrawerProps> = ({isOpen, onClose, children}) => {
   return (
         <>  
             {isOpen && (

@@ -1,14 +1,22 @@
-import { useActionState } from "react";
-import { postMood } from "@/lib/actions/post-mood";
+import { postMood } from "@/lib/actions/mood/post-mood";
 import { SubmitButton } from "./submit-button";
-import { updateMood } from "@/lib/actions/update-mood";
+import { updateMood } from "@/lib/actions/mood/update-mood";
+import { useFormState } from "react-dom";
 
 interface MoodFormProps {
     mood?: {_id: string, note: string, mood: string};
     isEdit?: boolean
 }
 export function MoodForm({mood, isEdit = false}: MoodFormProps){
-    const [state, formAction] = useActionState(isEdit ? updateMood : postMood, null)
+    const action = isEdit ? updateMood : postMood;
+    const reducer = async (
+        prevState: { Error: { mood?: string[]; note?: string[] } },
+        formData: FormData
+    ) => {
+        return await action(formData);
+    };
+    const [state, formAction] = useFormState(reducer, { Error: {} });
+
     return (
         <div>
             <form

@@ -1,6 +1,6 @@
 'use server'
 import Mood from "@/model/Mood"
-import connectDB from "../db"
+import connectDB from "../../db"
 
 export const getMoods = async ()=> {
     try {

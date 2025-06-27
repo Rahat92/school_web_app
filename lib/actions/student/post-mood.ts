@@ -22,7 +22,7 @@ const StudentSchema = z.object({
   class: z.string(),
 })
 
-export const postStudent = async (prevState: any, formData: FormData) => {
+export const postStudent = async (formData: FormData) => {
   const validatedFields = StudentSchema.safeParse(Object.fromEntries(formData.entries()))
   const photoFile = formData.get("photo")
 

@@ -120,16 +120,7 @@ import { useActionState } from 'react'
 
 type StudentFormState = {
   Error: {
-    name?: string[];
-    rollNumber?: string[];
-    email?: string[];
-    phone?: string[];
-    address?: string[];
-    dob?: string[];
-    gender?: string[];
-    age?: string[];
-    class?: string[];
-    photo?:string[]
+    [key: string]: string[] | undefined;
   };
 };
 
@@ -138,7 +129,10 @@ const initialState: StudentFormState = {
 };
 
 export default function StudentForm() {
-  const [state, formAction] = useActionState(postStudent, initialState)
+  const [state, formAction] = useActionState(
+    async (_state: StudentFormState, formData: FormData) => postStudent(formData),
+    initialState
+  )
 
   return (
     <form action={formAction} className="space-y-4" encType="multipart/form-data">

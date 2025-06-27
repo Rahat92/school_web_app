@@ -1,5 +1,5 @@
 'use server'
-import connectDB from "../db"
+import connectDB from "../../db"
 import {z} from "zod"
 import Mood from "@/model/Mood"
 import { revalidatePath } from "next/cache"
@@ -10,7 +10,7 @@ const MoodSchema = z.object({
     mood: z.string().min(1, "Mood cannot be empty")
 })
 
-export const postMood = async (prevState: any, formData: FormData)=> {
+export const postMood = async (formData: FormData)=> {
     const validatedFields = MoodSchema.safeParse(
         Object.fromEntries(formData.entries())
     )
@@ -24,7 +24,7 @@ export const postMood = async (prevState: any, formData: FormData)=> {
     await connectDB()
     try {
         const validatedData = MoodSchema.parse({note, mood})
-        const newMood = await Mood.create({
+        await Mood.create({
             note: validatedData.note,
             mood: validatedData.mood
         })
