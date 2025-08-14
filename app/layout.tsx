@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Link from "next/link";
+import { StudentProvider } from "./contexts/studentContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,8 +41,13 @@ export default function RootLayout({
                 </Link>
               </li>
               <li>
-                <Link href="/students" className="hover:underline">
+                <Link href="/students?limit=3" className="hover:underline">
                   Students
+                </Link>
+              </li>
+              <li>
+                <Link href="/teachers" className="hover:underline">
+                  Teachers
                 </Link>
               </li>
               <li>
@@ -52,7 +58,9 @@ export default function RootLayout({
             </ul>
           </div>
         </nav>
-        {children}
+        <StudentProvider>
+          {children}
+        </StudentProvider>
       </body>
     </html>
   );

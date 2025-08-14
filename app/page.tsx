@@ -2,7 +2,7 @@ import Header from "@/components/header";
 import ActionBar from "@/components/action-bar";
 import MoodList from "@/components/mood-list"
 import { Suspense } from "react";
-import StudentForm from "@/components/student-list";
+import StudentForm from "@/components/student-create";
 export default function Home() {
   return (
     <div>

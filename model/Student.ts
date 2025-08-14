@@ -9,7 +9,7 @@ interface IStudent extends Document {
     dob: Date;
     gender: string;
     age: number;
-    class: string;
+    // only five class are allowed 'one', 'two', 'three', 'four', 'five' with enum validation
     photo: string
     isActive: boolean;
     createdAt: Date;
@@ -24,7 +24,7 @@ const StudentSchema: Schema = new Schema({
     dob: { type: Date, required: true },
     gender: { type: String, enum: ['Male', 'Female', 'Other'], required: true },
     age: { type: Number, required: true },
-    class: { type: String, required: true },
+    class: { type: String, enum: ['One', 'Two', 'Three', 'Four', 'Five'], required: true },
     photo: { type: String, required: true },
     isActive: { type: Boolean, default: true },
     createdAt: { type: Date, default: Date.now }
