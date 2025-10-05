@@ -61,6 +61,7 @@ export default function RootLayout({
         <StudentProvider>
           {children}
         </StudentProvider>
+        <div id="modal"></div>
       </body>
     </html>
   );

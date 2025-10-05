@@ -17,12 +17,13 @@ interface ITeacher {
 
 const TeacherSchema: Schema = new Schema({
     name: { type: String, required: true },
-    employeeId: { type: String, unique: true },
+    // employeeId: { type: String, unique: true },
     email: { type: String, required: true, unique: true },
     phone: { type: String, required: true },
     address: { type: String, required: true },
     dob: { type: Date },
     photo: { type: String, required: true },
+    designation: {type:String, enum: ['Head', 'Assistant'], default: 'Assistant'},
     gender: { type: String, enum: ['Male', 'Female', 'Other'] },
     subject: { type: String },
     isActive: { type: Boolean, default: true },

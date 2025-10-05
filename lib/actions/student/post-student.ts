@@ -1,14 +1,14 @@
 'use server'
 
 import { z } from "zod"
-import Student from "@/model/Student"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
-import connectDB from "@/lib/db"
 import { writeFile, mkdir } from "fs/promises"
 import fs from "fs"
 import path from "path"
 import { v4 as uuidv4 } from "uuid"
+import connectDB from "../../db"
+import Student from "../../../model/Student"
 
 const StudentSchema = z.object({
   name: z.string().min(2),
